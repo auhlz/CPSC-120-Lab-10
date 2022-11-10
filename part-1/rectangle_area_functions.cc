@@ -1,4 +1,14 @@
-// TODO: Insert your own header
+// Alex Labitigan
+// CPSC 120-12
+// 2022-10-31
+// alexlabitigan@csu.fullerton.edu
+// @auhlz
+//
+// Lab 09-01
+// Partners: @dianasuceli
+//
+// Rectangle functions
+//
 
 // Calculate the area of a triangle defined by length and width.
 //
@@ -21,8 +31,12 @@
 // \param length the length of the rectangle
 // \param width the width the rectangle
 // \returns the area of the rectangle defined by length and width
-int RectangleArea(int length, int width) {
-  int area{-1};
   // TODO: Implement the function according to the specifications.
+
+int RectangleArea(int length, int width) {
+  int area{0};
+  if  (length >= 0 && width > 0) {
+    area = length * width;
+  }
   return area;
 }
