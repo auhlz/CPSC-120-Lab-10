@@ -6,13 +6,27 @@
 
 #include "counties_functions.h"
 
-int main(int argc, char const *argv[]) {
   // A 2D vector which represents all the counties in California
   // and the population of the counties. For example, Butte County
   // is at location 3. So the name is ca_counties[0][3] and
   // Butte County's population is ca_counties[1][3].
   // The population is stored as a string because we cannot mix
   // types in the 2D vector.
+
+  // TODO: convert the command line arguments to a std::vector of std::strings.
+  // TODO: Check to make sure you have enough arguments. If you have too few,
+  // print an error message, use AllCountiesString() to show all the counties,
+  // and exit.
+  // TODO: Use CountyIndex() to find the location of the county we are searching
+  // for.
+  // TODO: Check to see if the index returned is not -1. If it is not -1, print
+  // a message with the name of the county and the county's population. Else,
+  // print an error message saying the provided argument could not be found in
+  // the vector. Print a list of all the counties in California using
+  // AllCountiesString() and return 1.
+
+int main(int argc, char const *argv[]) {
+
   std::vector<std::vector<std::string>> ca_counties{
       {{"Alameda",   "Alpine",        "Amador",       "Butte",
         "Calaveras", "Colusa",        "Contra Costa", "Del Norte",
@@ -39,16 +53,20 @@ int main(int argc, char const *argv[]) {
         "1885508", "267792", "182139",  "3283",    "44118",  "451716",
         "485887",  "552999", "99063",   "65498",   "16060",  "477054",
         "55810",   "839784", "216986",  "83421"}}};
-  // TODO: convert the command line arguments to a std::vector of std::strings.
-  // TODO: Check to make sure you have enough arguments. If you have too few,
-  // print an error message, use AllCountiesString() to show all the counties,
-  // and exit.
-  // TODO: Use CountyIndex() to find the location of the county we are searching
-  // for.
-  // TODO: Check to see if the index returned is not -1. If it is not -1, print
-  // a message with the name of the county and the county's population. Else,
-  // print an error message saying the provided argument could not be found in
-  // the vector. Print a list of all the counties in California using
-  // AllCountiesString() and return 1.
+
+std::vector<std::string> args(argv, argv + argc);
+
+if (args.size() < 2) {
+std::cout << "Please specify a county name on the command line. Exiting.\n";
+std::cout << "For example: ./counties \"Los Angeles\" ";
+return 1;
+}
+if (CountyIndex(ca_counties, args[1]) == -1) {
+std::cout << "Error: " << args[1] << " is not in the vector. Please check your spelling.\n";
+std::cout << "The counties in California are: " << AllCountiesString(ca_counties);
+return 1;
+}
+std::cout<< "The population of " << args[1] << " county is " << ca_counties[1][CountyIndex(ca_counties, args[1])] << ".";
+
   return 0;
 }
