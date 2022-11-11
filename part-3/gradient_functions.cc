@@ -7,7 +7,7 @@
 // Lab 10-03
 // Partners: @dianasuceli
 //
-// Gradient Functions 
+// Gradient Functions
 //
 
 #include "gradient_functions.h"
