@@ -15,8 +15,8 @@
 std::string AllCountiesString(
     const std::vector<std::vector<std::string>> &ca_counties) {
   std::string all_counties_string;
-  for (int i = 0; i < ca_counties[0].size(); i++) {
-    all_counties_string += ca_counties[0][i] + " ";
+  for (const std::string &county : ca_counties.at(0)) {
+    all_counties_string += county + " ";
   }
 
   return all_counties_string;
