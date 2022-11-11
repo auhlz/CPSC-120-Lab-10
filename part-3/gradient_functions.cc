@@ -1,4 +1,14 @@
-// TODO: Insert your own header
+// Alex Labitigan
+// CPSC 120-12
+// 2022-10-31
+// alexlabitigan@csu.fullerton.edu
+// @auhlz
+//
+// Lab 10-03
+// Partners: @dianasuceli
+//
+// Gradient Functions 
+//
 
 #include "gradient_functions.h"
 
@@ -7,8 +17,6 @@
 // "output_image.png" and extension is ".png". The function will
 // return false if file_name is "output_image.bmp" and extension is
 // ".png".
-bool HasMatchingFileExtension(const std::string& file_name,
-                              const std::string& extension) {
   // TODO: Implement this function.
   // Check if the length of the file_name is greater than
   // or equal to the length of extension and compare if file_name ends
@@ -28,5 +36,12 @@ bool HasMatchingFileExtension(const std::string& file_name,
   // is true. This means you will want to use the 'equal to' operator
   // '==' to check to see if file_name.compare() returned 0.
   // ex. file_name.compare() == 0
-  return false;
+
+bool HasMatchingFileExtension(const std::string& file_name,
+                              const std::string& extension) {
+bool result{false};
+if (file_name.compare(file_name.size() - 4, 4, extension) == 0){
+  result = true;
+}
+return result;
 }

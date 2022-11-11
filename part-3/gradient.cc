@@ -1,4 +1,14 @@
-// TODO: Insert your own header
+// Alex Labitigan
+// CPSC 120-12
+// 2022-10-31
+// alexlabitigan@csu.fullerton.edu
+// @auhlz
+//
+// Lab 10-03
+// Partners: @dianasuceli
+//
+// Creates an image
+//
 
 #include <Magick++.h>
 
@@ -20,7 +30,38 @@ int main(int argc, char* argv[]) {
   // that happens in the main function.
   // Do not change or remove the line below.
   Magick::InitializeMagick(*argv);
+std::vector<std::string> arguments(argv, argv + argc);
+  if (arguments.size() < 2) {
+    std::cout << "Please provide a path to a file.\n";
+    return 1;
+  }
+std::string output_file_name;
 
+output_file_name = arguments.at(1);
+
+std::string image_format{"png"};
+
+if (!HasMatchingFileExtension(output_file_name, image_format)) {
+  std::cout << output_file_name << "is missing the required file extension .png.\n";
+}
+Magick::ColorRGB white(1, 1, 1);
+Magick::Image image(Magick::Geometry(kImageWidth, kImageHeight), white);
+
+
+for(int column = image.columns() -1; column >= 0; column--) {
+  for (int row = 0; row < image.rows(); row++){
+    double red = image.columns() - 1;
+    double green = image.rows() - 1;
+    double blue(0.25);
+    Magick::ColorRGB color{red, green, blue};
+    image.pixelColor(row, column, color);
+  }
+}
+image.write(output_file_name);
+
+
+  return 0;
+}
   // TODO: convert the command line arguments to a
   // std::vector of std::strings.
   // TODO: Check to make sure you have enough arguments. If you have
@@ -80,6 +121,3 @@ int main(int argc, char* argv[]) {
   // as output_file_name.
   // For example:
   // image.write(output_file_name);
-
-  return 0;
-}
