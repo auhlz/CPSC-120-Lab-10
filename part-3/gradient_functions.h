@@ -1,4 +1,14 @@
-// TODO: Insert your own header
+// Alex Labitigan
+// CPSC 120-12
+// 2022-10-31
+// alexlabitigan@csu.fullerton.edu
+// @auhlz
+//
+// Lab 10-03
+// Partners: @dianasuceli
+//
+// Gradient Functions 
+//
 
 /* Do not edit below this line. */
 /* Do not edit below this line. */
